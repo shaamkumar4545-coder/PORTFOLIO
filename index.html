@@ -1,1 +1,583 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaam Kumar S — DevOps Portfolio</title>
+<style>
+:root {
+  --sage: #7D8B7A;
+  --cream: #F0E6D5;
+  --burgundy: #642D3B;
+  --ink: #2E302C;
+  --muted: #6F7169;
+  --line: #D9D0C2;
+  --background: #F7F2E9;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: var(--background);
+  color: var(--ink);
+}
+a { color: inherit; }
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px clamp(20px, 6vw, 88px);
+  border-bottom: 1px solid var(--line);
+  gap: 24px;
+}
+.brand {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.brand span { color: var(--burgundy); }
+.navlinks {
+  display: flex;
+  gap: clamp(14px, 3vw, 32px);
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+.navlinks a { text-decoration: none; }
+.navlinks a:hover { color: var(--burgundy); }
+.pill {
+  text-decoration: none;
+  background: var(--burgundy);
+  color: white;
+  padding: 11px 17px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 5vw;
+  align-items: center;
+  padding: clamp(58px, 9vw, 120px) clamp(20px, 8vw, 120px) 92px;
+}
+.eyebrow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--burgundy);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-weight: 800;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--sage);
+  border-radius: 50%;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 7.7vw, 105px);
+  font-weight: 500;
+  line-height: .98;
+  letter-spacing: -.055em;
+  margin: 25px 0 24px;
+}
+h1 em { color: var(--burgundy); font-weight: 400; }
+.hero p {
+  max-width: 550px;
+  font-size: 16px;
+  line-height: 1.85;
+  color: #686A61;
+  margin: 0 0 30px;
+}
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 19px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { background: var(--burgundy); color: white; }
+.btn.secondary { border: 1px solid #BDB5A7; }
+.hero-art {
+  min-height: 390px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.art-card {
+  width: min(100%, 390px);
+  aspect-ratio: .84;
+  background: var(--sage);
+  border-radius: 48% 48% 5px 5px;
+  position: relative;
+  padding: 26px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  box-shadow: 20px 22px 0 var(--cream);
+}
+.art-card:before, .art-card:after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50%;
+  right: -80px;
+  top: 70px;
+  width: 260px;
+  height: 260px;
+}
+.art-card:after {
+  width: 190px;
+  height: 190px;
+  right: -45px;
+  top: 105px;
+}
+.art-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+.terminal {
+  z-index: 1;
+  background: rgba(40,48,40,.9);
+  padding: 19px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 7px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+.terminal .green { color: #D6E6C8; }
+.terminal .pink { color: #E6B8C4; }
+.art-bottom {
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 10px;
+}
+.art-bottom strong {
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 400;
+}
+.art-bottom small {
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.marquee {
+  background: var(--burgundy);
+  color: #F7F0E5;
+  padding: 17px 20px;
+  text-align: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  line-height: 2;
+}
+.section { padding: clamp(60px, 8vw, 100px) clamp(20px, 8vw, 120px); }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+.kicker {
+  color: var(--sage);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .17em;
+  font-weight: 800;
+}
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  margin: 12px 0 0;
+}
+.section-intro {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+.about {
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 7vw;
+  background: #E8E4D9;
+}
+.about-stamp {
+  background: var(--burgundy);
+  color: #F7F0E5;
+  min-height: 270px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.about-stamp span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+}
+.about-stamp strong {
+  font-family: Georgia, serif;
+  font-size: 60px;
+  line-height: 1;
+  font-weight: 400;
+}
+.about-copy p {
+  color: #62645C;
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 700px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  margin-top: 28px;
+}
+.stat { border-top: 1px solid #BDB9AC; padding-top: 13px; }
+.stat strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 400;
+  color: var(--burgundy);
+}
+.stat span { font-size: 11px; color: var(--muted); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.skill-card {
+  background: #FBF8F1;
+  border: 1px solid var(--line);
+  padding: 24px;
+  min-height: 180px;
+  border-radius: 4px;
+}
+.skill-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #E4E8DF;
+  color: var(--burgundy);
+  font-size: 17px;
+  margin-bottom: 22px;
+}
+.skill-card h3, .edu h3 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.skill-card h3 { font-size: 23px; margin: 0 0 12px; }
+.skill-card p, .project p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.projects { background: #E8E4D9; }
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 16px;
+}
+.project {
+  background: #F7F2E9;
+  border: 1px solid #D8D0C3;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  border-radius: 4px;
+}
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  color: var(--sage);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.project-num {
+  color: var(--burgundy);
+  font-family: Georgia, serif;
+  font-size: 25px;
+}
+.project h3 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.12;
+  margin: 38px 0 14px;
+}
+.tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: auto; }
+.tag {
+  font-size: 10px;
+  border: 1px solid #D2C8B8;
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #5B5C54;
+}
+.timeline { border-top: 1px solid var(--line); }
+.job {
+  display: grid;
+  grid-template-columns: .6fr 1.4fr;
+  gap: 25px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.job time { color: var(--burgundy); font-size: 12px; }
+.job h3 {
+  margin: 0 0 7px;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 25px;
+}
+.job p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.edu {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 0;
+  border-bottom: 1px solid var(--line);
+}
+.edu h3 { font-size: 23px; margin: 0 0 7px; }
+.edu p { margin: 0; font-size: 13px; color: var(--muted); }
+.edu span { color: var(--burgundy); font-size: 12px; }
+.contact {
+  background: var(--burgundy);
+  color: #F7F0E5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5vw;
+  align-items: center;
+}
+.contact .kicker { color: #D6DCCF; }
+.contact h2 { max-width: 560px; }
+.contact p {
+  color: #E0D0D0;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 440px;
+}
+.contact-links { display: grid; gap: 10px; }
+.contact-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #986F78;
+  text-decoration: none;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.contact-link span:last-child { color: #D7C1C5; }
+footer {
+  padding: 22px clamp(20px, 8vw, 120px);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font-size: 11px;
+}
+@media(max-width:800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 60px; }
+  .hero-art { min-height: 350px; }
+  .art-card { max-width: 330px; }
+  .about { grid-template-columns: 1fr; }
+  .about-stamp { min-height: 190px; }
+  .skills-grid, .project-grid { grid-template-columns: 1fr 1fr; }
+  .contact { grid-template-columns: 1fr; }
+  .section-head { align-items: start; flex-direction: column; }
+}
+@media(max-width:520px) {
+  .nav { align-items: flex-start; }
+  .navlinks { display: none; }
+  .hero { padding-bottom: 65px; }
+  .hero-art { min-height: 300px; }
+  .skills-grid, .project-grid { grid-template-columns: 1fr; }
+  .project { min-height: 280px; }
+  .job { grid-template-columns: 1fr; gap: 8px; }
+  .edu { flex-direction: column; gap: 8px; }
+  .stats { grid-template-columns: 1fr; }
+  .stats .stat { display: flex; justify-content: space-between; }
+  .contact { padding-top: 60px; padding-bottom: 60px; }
+  footer { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="#home">SHAAM <span>KUMAR</span></a>
+  <nav class="navlinks">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+  </nav>
+  <a class="pill" href="#contact">LET'S CONNECT ↗</a>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> Aspiring DevOps Engineer · Chennai, India</div>
+    <h1>Building reliable<br>systems, <em>one step</em><br>at a time.</h1>
+    <p>I'm Shaam Kumar S — an IT graduate focused on DevOps and cloud engineering. I enjoy bringing code, automation, containers, and infrastructure together to make software delivery more reliable.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">Explore my work ↘</a>
+      <a class="btn secondary" href="mailto:shaamkumar38@gmail.com">Get in touch ↗</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="art-card">
+      <div class="art-top"><span>Infrastructure / 001</span><span>Build · Ship · Scale</span></div>
+      <div class="terminal">
+        <div><span class="pink">shaam@cloud</span>:~$ docker build .</div>
+        <div class="green">✓ image built successfully</div>
+        <div><span class="pink">shaam@cloud</span>:~$ kubectl get pods</div>
+        <div class="green">✓ app-deployment Running</div>
+        <div><span class="pink">shaam@cloud</span>:~$ _</div>
+      </div>
+      <div class="art-bottom"><strong>Learn. Automate.<br>Improve.</strong><small>DevOps mindset<br>Est. 2026</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">GIT & GITHUB ✳ LINUX ✳ JENKINS ✳ DOCKER ✳ KUBERNETES ✳ AWS ✳ PYTHON</div>
+
+<section class="section about" id="about">
+  <div class="about-stamp">
+    <span>01 / A little about me</span>
+    <strong>Curious<br>by nature.</strong>
+    <span>IT · Cloud · Automation</span>
+  </div>
+  <div class="about-copy">
+    <div class="kicker">ABOUT ME</div>
+    <h2>From writing code<br>to shipping systems.</h2>
+    <p>My journey started with software development and grew into an interest in the systems that help applications run. I’m building practical experience with Linux environments, version control, CI/CD, containers, Kubernetes, and AWS fundamentals.</p>
+    <p>I believe in learning by building: testing a workflow, finding what breaks, and improving it step by step. I’m looking for an entry-level DevOps or cloud engineering opportunity where I can contribute, learn from a team, and grow through real-world work.</p>
+    <div class="stats">
+      <div class="stat"><strong>2026</strong><span>B.Tech IT graduate</span></div>
+      <div class="stat"><strong>03</strong><span>Featured projects</span></div>
+      <div class="stat"><strong>∞</strong><span>Curiosity to learn</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="section-head">
+    <div><div class="kicker">02 / What I work with</div><h2>Tools of the trade.</h2></div>
+    <p class="section-intro">A growing toolkit across automation, cloud infrastructure, containers, and software development.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">⌘</div><h3>Version control</h3><p>Git · GitHub<br>Repository workflows, source-code management, and collaboration.</p></div>
+    <div class="skill-card"><div class="skill-icon">$_</div><h3>Linux & systems</h3><p>Linux · Ubuntu<br>Command-line practice and Linux-based development environments.</p></div>
+    <div class="skill-card"><div class="skill-icon">↻</div><h3>CI/CD</h3><p>Jenkins<br>Build and deployment workflow practice with source repositories.</p></div>
+    <div class="skill-card"><div class="skill-icon">▣</div><h3>Containers</h3><p>Docker<br>Containerization concepts and application packaging.</p></div>
+    <div class="skill-card"><div class="skill-icon">⎈</div><h3>Orchestration</h3><p>Kubernetes<br>Pods, Deployments, Services, Secrets, ConfigMaps, and Volumes.</p></div>
+    <div class="skill-card"><div class="skill-icon">☁</div><h3>Cloud & code</h3><p>AWS fundamentals · Python (Basic) · Java · C · C++</p></div>
+  </div>
+</section>
+
+<section class="section projects" id="projects">
+  <div class="section-head">
+    <div><div class="kicker">03 / Selected work</div><h2>Learning through building.</h2></div>
+    <p class="section-intro">Hands-on practice across deployment workflows, container orchestration, and application access control.</p>
+  </div>
+  <div class="project-grid">
+    <article class="project">
+      <div class="project-top"><span>Cloud native</span><span class="project-num">01</span></div>
+      <h3>Kubernetes Application Deployment</h3>
+      <p>Practiced deploying applications with Pods and Deployments, exposing them through Services, and configuring application settings and storage.</p>
+      <div class="tags"><span class="tag">Kubernetes</span><span class="tag">Ubuntu</span><span class="tag">Secrets</span><span class="tag">Volumes</span></div>
+    </article>
+    <article class="project">
+      <div class="project-top"><span>Automation</span><span class="project-num">02</span></div>
+      <h3>Jenkins CI/CD Practice</h3>
+      <p>Explored Jenkins-based build and deployment workflows integrated with Git/GitHub repositories for source-code management and automation.</p>
+      <div class="tags"><span class="tag">Jenkins</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">CI/CD</span></div>
+    </article>
+    <article class="project">
+      <div class="project-top"><span>Web application</span><span class="project-num">03</span></div>
+      <h3>Role-Based Access Control System</h3>
+      <p>Developed a discussion board with Admin, Moderator, and Member roles, applying role-based permissions, role hierarchy, and content moderation.</p>
+      <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">.NET</span><span class="tag">Supabase</span></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="section-head">
+    <div><div class="kicker">04 / Where I've learned</div><h2>Experience & education.</h2></div>
+  </div>
+  <div class="timeline">
+    <div class="job"><time>JUL 2025</time><div><h3>Full Stack Developer Intern · Oneyes Infotech Solutions</h3><p>Worked with full-stack web application concepts, from frontend to backend, and gained exposure to deployment processes and real-world technology stacks.</p></div></div>
+    <div class="job"><time>NOV 2024 — FEB 2025</time><div><h3>Web Developer Intern · SmartED Solutions</h3><p>Built dynamic websites using Python and Java, with exposure to debugging, UI improvements, and scalable design.</p></div></div>
+    <div class="job"><time>SEP 2023</time><div><h3>Full Stack Developer Intern · DLK Career Development</h3><p>Learned practical project-building fundamentals, understanding client requirements and company workflows.</p></div></div>
+  </div>
+  <div style="margin-top:48px">
+    <div class="kicker">EDUCATION</div>
+    <div class="edu"><div><h3>B.Tech — Information Technology</h3><p>DMI College of Engineering · Chennai</p></div><span>2022 — 2026 · CGPA 8.0</span></div>
+    <div class="edu"><div><h3>Class XII · Tamil Nadu State Board</h3><p>Higher Secondary Education</p></div><span>81%</span></div>
+    <div class="edu"><div><h3>Class X · Tamil Nadu State Board</h3><p>Secondary Education</p></div><span>76.4%</span></div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div>
+    <div class="kicker">05 / Have an opportunity?</div>
+    <h2>Let’s build something dependable.</h2>
+    <p>I’m open to entry-level DevOps and cloud engineering opportunities across India. If you’re hiring or would like to connect, I’d be glad to hear from you.</p>
+    <a class="btn" style="background:var(--cream);color:var(--burgundy);margin-top:10px" href="mailto:shaamkumar38@gmail.com">Email me ↗</a>
+  </div>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:shaamkumar38@gmail.com"><span>Email</span><span>shaamkumar38@gmail.com ↗</span></a>
+    <a class="contact-link" href="https://www.linkedin.com/in/shaam-kumar-s07/" target="_blank" rel="noreferrer"><span>LinkedIn</span><span>Connect professionally ↗</span></a>
+    <a class="contact-link" href="https://github.com/shaamkumar4545-coder" target="_blank" rel="noreferrer"><span>GitHub</span><span>Explore repositories ↗</span></a>
+    <div class="contact-link"><span>Location</span><span>Chennai, India</span></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 Shaam Kumar S</span>
+  <span>Designed with purpose · Sage / Cream / Burgundy</span>
+  <a href="#home" style="text-decoration:none">Back to top ↑</a>
+</footer>
+</body>
+</html>
+
